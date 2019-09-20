@@ -1,9 +1,8 @@
 package com.lambdaschool.starthere;
 
-import com.lambdaschool.starthere.models.Role;
-import com.lambdaschool.starthere.models.User;
-import com.lambdaschool.starthere.models.UserRoles;
-import com.lambdaschool.starthere.models.Useremail;
+import com.lambdaschool.starthere.models.*;
+import com.lambdaschool.starthere.services.AuthorService;
+import com.lambdaschool.starthere.services.BookService;
 import com.lambdaschool.starthere.services.RoleService;
 import com.lambdaschool.starthere.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +21,12 @@ public class SeedData implements CommandLineRunner
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    BookService bookService;
+
+    @Autowired
+    AuthorService authorService;
 
 
     @Override
@@ -78,5 +83,19 @@ public class SeedData implements CommandLineRunner
         users.add(new UserRoles(new User(), r2));
         User u5 = new User("Jane", "password", users);
         userService.save(u5);
+
+        Author author1 = new Author("John", "Mitchell");
+        Author author2 = new Author("Dan", "Brown");
+        Author author3 = new Author("Jerry", "Poe");
+        Author author4 = new Author("Wells", "Teague");
+        Author author5 = new Author("George", "Gallinger");
+        Author author6 = new Author("Ian", "Stewart");
+
+        Book book1 = new Book("Flatterland", "9780738206752", 2001);
+        Book book2 = new Book("Digital Fortess", "9788489367012", 2007);
+        Book book3 = new Book("The Da Vinci Code", "9780307474278", 2009);
+        Book book4 = new Book("Essentials of Finance", "1314241651234", 0);
+        Book book5 = new Book("Calling Texas Home", "1885171382134", 2000);
+
     }
 }
